@@ -1,0 +1,7 @@
+﻿{
+    "Auckland": [
+        { "year": 2105, "suburb": "Auckland CBD", "population": 10000 },
+        { "year": 2105, "suburb": "Takapuna", "population": 5000 },
+        { "year": 2105, "suburb": "Mt Roskil", "population": 3000 }
+    ]
+}
