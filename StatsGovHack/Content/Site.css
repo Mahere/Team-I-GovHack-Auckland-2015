@@ -1,0 +1,74 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/*NEW*/
+.menu{
+    float:left;
+    margin: 0px;
+    margin-top: 15px;
+    width: 400px;
+    height: 500px;
+    background: #314351;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#map-canvas{
+    float:right;
+    margin-top:15px;
+    margin-left: 15px;
+    width: 900px;
+    height: 500px;
+    border-left:1px solid black;
+}
+
+.charts-container{
+    border: 1px solid black;
+    height: 100px;
+    width: inherit;
+}
+
+.img{
+    height:450px;
+    padding-left: 100px;
+}
