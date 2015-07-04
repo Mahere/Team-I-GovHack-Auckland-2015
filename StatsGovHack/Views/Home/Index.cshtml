@@ -1,7 +1,18 @@
 ﻿<!--Charts-->
 <div  ng-controller="mainController" class="charts-container">
     {{random}}
-    <div id="chart_div"></div>
+
+    <script type="text/javascript"
+            src="https://www.google.com/jsapi?autoload={
+            'modules':[{
+              'name':'visualization',
+              'version':'1',
+              'packages':['corechart']
+            }]
+          }"></script>
+    <div id="curve_chart" style="width: 200px; height: 200px"></div>
+    <div id="crime_chart" style="width: 200px; height: 200px"></div>
+
 </div>
 
 
@@ -18,30 +29,19 @@
                 <option>Housing</option>
             </select>
 
-        </div> 
+        </div>
         <button class="btn btn-primary" ng-click="addDimensionToSelection(selectedDim)">Add</button>
     </form>
-
-
-    <select ng-model="selectedDim">
-        <option>Population</option>
-        <option>Crime</option>
-        <option>Education</option>
-        <option>Housing</option>
-    </select>
-    <button ng-click="addDimensionToSelection(selectedDim)">Add</button>
 
     <ul>
         <li></li>
     </ul>
-    
 
-</div>    
+
+</div>
 
 <!--Map-->
 <div id="map-canvas"></div>
-
-
 
 
 
