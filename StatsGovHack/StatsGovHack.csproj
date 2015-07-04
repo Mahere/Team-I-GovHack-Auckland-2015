@@ -161,6 +161,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="vw_pastpop2013.json" />
+    <Content Include="vw_crime.json" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
