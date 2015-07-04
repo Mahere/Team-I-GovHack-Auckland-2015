@@ -60,6 +60,27 @@ namespace StatsGovHack.Controllers
             return Json("0", JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetCrimeDataBySuburb(string suburb)
+        {
+            if (HttpContext != null)
+            {
+                string fileName = Path.Combine(HttpContext.Request.PhysicalApplicationPath, "vw_crime.json");
+                using (var r = new StreamReader(fileName))
+                {
+                    string json = r.ReadToEnd();
+                    var items = JsonConvert.DeserializeObject<List<Item>>(json);
+
+                    var filteredItems = items.FindAll(x => x.suburb == suburb);
+
+                    if (filteredItems != null)
+                    {
+                        return Json(filteredItems, JsonRequestBehavior.AllowGet);
+                    }
+                }
+            }
+            return Json("0", JsonRequestBehavior.AllowGet); 
+        }
+
     }
 
     public class Item
