@@ -38,8 +38,7 @@ function initialize() {
             fillOpacity: 0.8,
             map: map,
             center: suburbs[suburb].center,
-            radius: 800,
-            clickable: true
+            radius: 800
         };
 
         var suburbCircle = {
@@ -57,7 +56,7 @@ function initialize() {
 }
 
 function selectSuburb() {
-    alert( "circle clicked");
+    alert("circle clicked");
 }
 
 function clearCircles() {
