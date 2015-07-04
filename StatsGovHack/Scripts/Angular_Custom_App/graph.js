@@ -1,12 +1,16 @@
 ﻿
-google.setOnLoadCallback(drawGraphs);
+google.setOnLoadCallback(draw);
 
-function drawGraphs() {
-    drawCrimeChart("2005");
+function draw() {
+    drawGraphs();
+};
+
+function drawGraphs(time) {
+    drawCrimeChart(time);
     drawEducationChart();
     drawHousingChart();
     drawPopullationChart();
-};
+}
 
 var crimeResult;
 var popullationResult;
@@ -23,16 +27,16 @@ var drawCrimeChart = function (selectedYear) {
         var tempArr = [];
         tempArr[0] = currentElement.year;
         tempArr[1] = parseInt(currentElement.value);
-        tempArr[2] = null;
+        tempArr[2] = 'point { size: 7; shape-type: circle; fill-color: #15A0C8}';
         if (selectedYear != null) {
             if (selectedYear == tempArr[0]) {
-                tempArr[2] = 'point { size: 18; shape-type: star; fill-color: #a52714}';
+                tempArr[2] = 'point { size: 8; shape: circle; fill-color: #FF6600}';
                 console.log("hit 2005" + selectedYear);
             }
         } else {
             console.log("hit empty" + selectedYear);
 
-            tempArr[2] = 'point { size: 14; shape-type: circle; fill-color: #a52714}';
+            tempArr[2] = 'point { size: 7; shape-type: circle; fill-color: #15A0C8}';
 
             //tempArr[2] = null;
         }
@@ -173,7 +177,7 @@ getEducationData("Mt Eden");
 getHousingData("Pakuranga");
 
 //Update Widgets- Call this based on change detected by the slider and map
-var updateCharts = function (location, time) {
-    getCrimeData(location);
-    drawGraphs();
+function updateCharts(time) {
+    console.log("@ updateCharts " + time);
+    drawGraphs(time);
 };
