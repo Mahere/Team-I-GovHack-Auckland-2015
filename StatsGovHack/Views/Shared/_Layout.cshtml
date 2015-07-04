@@ -6,8 +6,10 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
 </head>
-<body ng-app="app">
+<body ng-app="myApp">
        <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -30,8 +32,13 @@
     <div class="body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p></p>
+        <footer class="well-lg" style="margin-top: 550px;">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+                <label for="slider1" style="color: white; background-color: #314351; padding: 5px 5px;">Year</label>&nbsp;
+                <input id="slider1" type="range" min="1995" max="2030" step="1" value="2014" oninput="UpdateYear(value)" />
+                <output for=slider1 id=selectedYear style="color: white; background-color: #314351; padding: 5px 5px;">2014</output>
+            </div>
         </footer>
     </div>
 
@@ -50,7 +57,7 @@
 
     <script src="~/Scripts/Angular_Custom_App/app.js"></script>
     <script src="~/Scripts/Angular_Custom_App/mainController.js"></script>
-    <script src="~/Scripts/Angular_Custom_App/graphing.js"></script>
+    @*<script src="~/Scripts/Angular_Custom_App/graphing.js"></script>*@
 
 
 
