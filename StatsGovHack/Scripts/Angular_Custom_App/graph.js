@@ -5,18 +5,25 @@ function drawGraphs() {
     drawCrimeChart();
     drawEducationChart();
     drawHousingChart();
-    testData();
 };
 
+var crimeResult;
+
 var drawCrimeChart = function () {
-    
-    var data = google.visualization.arrayToDataTable([
-      ['Year', 'Crime Rate'],
-      ['2004', 1000],
-      ['2005', 1170],
-      ['2006', 660],
-      ['2007', 1030]
-    ]);
+    var data = crimeResult;
+    var convertedArr = [];
+    var tempArr = ['Year', 'Crime Rate'];
+    convertedArr.push(tempArr);
+    for (var i = 0; i < data.length; i++) {
+        var currentElement = data[i];
+        var tempArr = [];
+        tempArr[0] = currentElement.year;
+        tempArr[1] = parseInt(currentElement.value);
+        convertedArr.push(tempArr);
+    }
+    console.log(convertedArr);
+
+    var graphData = google.visualization.arrayToDataTable(convertedArr);
 
     var options = {
         title: 'Crime Rate',
@@ -24,7 +31,7 @@ var drawCrimeChart = function () {
         legend: { position: 'bottom' }
     };
     var chart = new google.visualization.LineChart(document.getElementById('crime_chart'));
-    chart.draw(data, options);
+    chart.draw(graphData, options);
 };
 
 var drawEducationChart = function (){
@@ -38,13 +45,17 @@ var drawHousingChart = function () {
 
 //Retrieve Data
 
-var updateCharts = function (location, time) {
-    //switch - chart type
-    //callData metho below appropriately.
-};
 
-var getCrimeData = function () {
-    //Call service
+
+var URL = "http://localhost:49313/";
+
+function getCrimeData(selectedSuburb) {
+    var url = URL + 'Home/GetCrimeDataBySuburb';
+    $.get(url, {suburb: selectedSuburb}, function (response) {
+        console.log(response);
+        crimeResult = response;
+        return response;
+    });
 };
 
 var getEducationData = function () {
@@ -53,4 +64,12 @@ var getEducationData = function () {
 
 var getHousingData = function () {
     //Call service
+};
+
+getCrimeData("Auckland Central Area");
+
+//Update Widgets- Call this based on change detected by the slider and map
+var updateCharts = function (location, time) {
+    getCrimeData(location);
+    drawGraphs();
 };
