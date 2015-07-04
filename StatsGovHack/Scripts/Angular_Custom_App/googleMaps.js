@@ -1,24 +1,22 @@
 ﻿$(document).ready(initialize);
 
-var suburbs = {};
-suburbs['Auckland CBD'] = {
-    center: new google.maps.LatLng(-36.846815, 174.766249),
-    population: 21000
-};
-suburbs['New Market'] = {
-    center: new google.maps.LatLng(-36.870385, 174.774553),
-    population: 19000
-};
-suburbs['Parnell'] = {
-    center: new google.maps.LatLng(-36.853791, 174.778626),
-    population: 14000
-};
-suburbs['Mt Albert'] = {
-    center: new google.maps.LatLng(-36.884209, 174.714081),
-    population: 4999
-};
+var suburbs = [];
 
+function getAllSuburbs() {
+    var url = URL + '/home/GetAllSuburbs';
+    $.get(url, function (result) {
+        console.log(result);
+        saveSuburbs(result);
+    });
+}
 
+function saveSuburbs(list) {
+    for (var item in list) {
+        var suburb = new Suburb(item.suburb, item.area, item.latitude, item.longitude);
+        console.log('pushing ' + item + ' to suburb array');
+        suburbs.push(suburb);
+    }
+}
 var suburbCircles = [];
 
 function initialize() {
