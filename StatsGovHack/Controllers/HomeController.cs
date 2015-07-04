@@ -40,6 +40,7 @@ namespace StatsGovHack.Controllers
 
             return Json("0", JsonRequestBehavior.AllowGet);
         }
+
     }
 
     public class Item

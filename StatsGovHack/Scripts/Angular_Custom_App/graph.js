@@ -9,22 +9,21 @@ function drawGraphs() {
 };
 
 var drawCrimeChart = function () {
+    
     var data = google.visualization.arrayToDataTable([
-      ['Year', 'Sales', 'Expenses'],
-      ['2004', 1000, 400],
-      ['2005', 1170, 460],
-      ['2006', 660, 1120],
-      ['2007', 1030, 540]
+      ['Year', 'Crime Rate'],
+      ['2004', 1000],
+      ['2005', 1170],
+      ['2006', 660],
+      ['2007', 1030]
     ]);
 
     var options = {
-        title: 'Company Performance',
+        title: 'Crime Rate',
         curveType: 'function',
         legend: { position: 'bottom' }
     };
-
     var chart = new google.visualization.LineChart(document.getElementById('crime_chart'));
-
     chart.draw(data, options);
 };
 
@@ -36,11 +35,22 @@ var drawHousingChart = function () {
 
 };
 
-function testData() {
-    $.getScript("Scripts/Angular_Custom_App/mainController.js", function () {
-        
-        var dt = getData();
-        console.log(dt);
-    });
-    
+
+//Retrieve Data
+
+var updateCharts = function (location, time) {
+    //switch - chart type
+    //callData metho below appropriately.
+};
+
+var getCrimeData = function () {
+    //Call service
+};
+
+var getEducationData = function () {
+    //Call service
+};
+
+var getHousingData = function () {
+    //Call service
 };
