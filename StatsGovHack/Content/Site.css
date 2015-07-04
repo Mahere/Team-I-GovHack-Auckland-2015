@@ -54,11 +54,10 @@ input[type="checkbox"].input-validation-error {
 }
 
 #map-canvas{
-    float:right;
-    margin-top:15px;
-    margin-left: 15px;
-    width: 900px;
-    height: 500px;
+    /*float:right;
+    margin-top: 15px;
+    margin-left: 15px;*/
+    height: 600px;
     border-left:1px solid black;
 }
 

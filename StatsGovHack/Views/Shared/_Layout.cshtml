@@ -3,61 +3,55 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body ng-app="myApp">
-       <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("i - Mahere", "Index", "Home", null, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@*@Html.ActionLink("Home", "Index", "Home")*@</li>
-                </ul>
+    <body ng-app="myApp">
+        
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    @Html.ActionLink("i - Mahere", "Index", "Home", null, new { @class = "navbar-brand" })
+                </div>
             </div>
         </div>
-    </div>
     
     
-    <div class="body-content">
-        @RenderBody()
-        <hr />
-        <footer class="well-lg" style="margin-top: 550px;">
-            <div class="col-md-4"></div>
-            <div class="col-md-8">
-                <label for="slider1" style="color: white; background-color: #314351; padding: 5px 5px;">Year</label>&nbsp;
-                <input id="slider1" type="range" min="1995" max="2030" step="1" value="2014" oninput="UpdateYear(value)" />
-                <output for=slider1 id=selectedYear style="color: white; background-color: #314351; padding: 5px 5px;">2014</output>
+        <div class="body-content">
+            
+            @RenderBody()
+            <div class="row">
+                <hr/>
+                <footer class="well-lg" style="margin-top: 0px;">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-8">
+                        <label for="slider1" style="color: white; background-color: #314351; padding: 5px 5px;">Year</label>&nbsp;
+                        <input id="slider1" type="range" min="1995" max="2030" step="1" value="2014" oninput="UpdateYear(value)" />
+                        <output for=slider1 id=selectedYear style="color: white; background-color: #314351; padding: 5px 5px;">2014</output>
+                    </div>
+                </footer>
             </div>
-        </footer>
-    </div>
+        </div>
 
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
 
     
-    <script src="~/Scripts/angular.min.js"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script src="~/Scripts/angular.min.js"></script>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUkwO_jjlDd8f86sbzcIQ51GzTPIyb5D0"></script>
-    <script src="~/Scripts/Angular_Custom_App/googleMaps.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUkwO_jjlDd8f86sbzcIQ51GzTPIyb5D0"></script>
+        <script src="~/Scripts/Angular_Custom_App/googleMaps.js"></script>
 
-    <script src="~/Scripts/Angular_Custom_App/app.js"></script>
-    <script src="~/Scripts/Angular_Custom_App/mainController.js"></script>
-    <script src="~/Scripts/Angular_Custom_App/graph.js"></script>
+        <script src="~/Scripts/Angular_Custom_App/app.js"></script>
+        <script src="~/Scripts/Angular_Custom_App/mainController.js"></script>
+        <script src="~/Scripts/Angular_Custom_App/graph.js"></script>
 
 
-</body>
+    </body>
 </html>

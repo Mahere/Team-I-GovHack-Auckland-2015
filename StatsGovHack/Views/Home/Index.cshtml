@@ -1,8 +1,12 @@
-﻿<!--Charts-->
-<div  ng-controller="mainController" class="charts-container">
+﻿<div class="row">
     
-    <script type="text/javascript"
-            src="https://www.google.com/jsapi?autoload={
+    <div class="col-md-2">
+
+        <!--Charts-->
+        <div ng-controller="mainController">
+
+            <script type="text/javascript"
+                    src="https://www.google.com/jsapi?autoload={
             'modules':[{
               'name':'visualization',
               'version':'1',
@@ -10,39 +14,42 @@
             }]
           }"></script>
 
-    <div id="curve_chart" style="width: 200px; height: 200px"></div>
-    <div id="crime_chart" style="width: 200px; height: 200px"></div>
-
-</div>
-
-
-<!--Side Menu-->
-@*<div class="menu">
-
-    <form>
-        <div class="form-group">
-            <label>Dimensions</label>
-            <select ng-model="selectedDim">
-                <option>Population</option>
-                <option>Crime</option>
-                <option>Education</option>
-                <option>Housing</option>
-            </select>
+            <div id="curve_chart" style="width: 200px; height: 200px"></div>
+            <div id="crime_chart" style="width: 200px; height: 200px"></div>
 
         </div>
-        <button class="btn btn-primary" ng-click="addDimensionToSelection(selectedDim)">Add</button>
-    </form>
-
-    <ul>
-        <li></li>
-    </ul>
 
 
-</div>*@
+        <!--Side Menu-->
+        @*<div class="menu">
 
-<!--Map-->
-<div id="map-canvas"></div>
+                <form>
+                    <div class="form-group">
+                        <label>Dimensions</label>
+                        <select ng-model="selectedDim">
+                            <option>Population</option>
+                            <option>Crime</option>
+                            <option>Education</option>
+                            <option>Housing</option>
+                        </select>
 
+                    </div>
+                    <button class="btn btn-primary" ng-click="addDimensionToSelection(selectedDim)">Add</button>
+                </form>
+
+                <ul>
+                    <li></li>
+                </ul>
+
+
+            </div>*@
+    </div>
+
+    <!--Map-->
+    <div class="col-md-10" id="map-canvas">
+    </div>
+
+</div>
 
 
 
