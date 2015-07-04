@@ -1,52 +1,38 @@
 ﻿
 ﻿<div class="row">
     
-    <div class="col-md-2">
+    <div class="col-md-3" >
         <!--Charts-->
         <div ng-controller="mainController">
 
-            <script type="text/javascript"
-                    src="https://www.google.com/jsapi?autoload={
-            'modules':[{
-              'name':'visualization',
-              'version':'1',
-              'packages':['corechart']
-            }]
-          }"></script>
+                    <script type="text/javascript"
+                            src="https://www.google.com/jsapi?autoload={
+                    'modules':[{
+                      'name':'visualization',
+                      'version':'1',
+                      'packages':['corechart']
+                    }]
+                  }"></script>
+    
+            
+            <span><label style="width:80px; color: white; background-color: #314351; padding: 5px 5px;">location </label> <label>{{selectedLocation}}</label></span>
+            <br/>
+            <label for="slider1" style="width:80px; color: white; background-color: #314351; padding: 5px 5px;">year </label>&nbsp;
+            <input id="slider1" type="range" min="1995" max="2030" step="1" value="2014" oninput="UpdateYear(value); updateCharts(value);" />
+            <output for=slider1 id=selectedYear style="color: white; background-color: #314351; padding: 5px 5px;">2014</output>
 
-    <div id="crime_chart" style="width: 200px; height: 200px"></div>
-    <div id="education_chart" style="width: 200px; height: 200px"></div>
-    <div id="housing_chart" style="width: 200px; height: 200px"></div>
+            <div id="crime_chart" style="width: 400px; height: 200px"></div>
+            <div id="housing_chart" style="width: 400px; height: 200px"></div>
+            <div id="education_chart" style="width: 400px; height: 200px"></div>
+            <div id="popullation_chart" style="width: 400px; height: 200px"></div>
         </div>
 
 
-        <!--Side Menu-->
-        @*<div class="menu">
-
-                <form>
-                    <div class="form-group">
-                        <label>Dimensions</label>
-                        <select ng-model="selectedDim">
-                            <option>Population</option>
-                            <option>Crime</option>
-                            <option>Education</option>
-                            <option>Housing</option>
-                        </select>
-
-                    </div>
-                    <button class="btn btn-primary" ng-click="addDimensionToSelection(selectedDim)">Add</button>
-                </form>
-
-                <ul>
-                    <li></li>
-                </ul>
-
-
-            </div>*@
+        
     </div>
 
     <!--Map-->
-    <div class="col-md-10" id="map-canvas">
+    <div class="col-md-9" id="map-canvas">
     </div>
 
 </div>
