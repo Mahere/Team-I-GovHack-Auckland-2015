@@ -28,6 +28,7 @@ function initialize() {
     var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
     for (var suburb in suburbs) {
+
         var popColour = colourCode(suburbs[suburb].population);
         var populationOptions = {
             strokeColor: popColour,
