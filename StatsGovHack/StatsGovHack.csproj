@@ -159,6 +159,7 @@
     <Content Include="vw_popproj.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="vw_pastpop2013.json" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
