@@ -18,7 +18,8 @@ suburbs['Mt Albert'] = {
     population: 4999
 };
 
-var suburbCircle;
+
+var suburbCircles = [];
 
 function initialize() {
     var mapOptions = {
@@ -28,8 +29,7 @@ function initialize() {
     var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
     for (var suburb in suburbs) {
-
-        var popColour = colourCode(suburbs[suburb].population);
+        var popColour = colourCode(suburbs[suburb].population); //insert population here
         var populationOptions = {
             strokeColor: popColour,
             strokeOpacity: 0.8,
@@ -38,12 +38,34 @@ function initialize() {
             fillOpacity: 0.8,
             map: map,
             center: suburbs[suburb].center,
-            radius: 800
+            radius: 800,
+            clickable: true
         };
-        suburbCircle = new google.maps.Circle(populationOptions);
+
+        var suburbCircle = {
+            suburb: suburb,
+            circle: new google.maps.Circle(populationOptions)
+        }
+     
+          suburbCircles.push(suburbCircle);
+    }
+
+    for (var i = 0; i < suburbCircles.length; i++) {
+        google.maps.event.addListener(suburbCircles[i].circle, 'click', selectSuburb);
     }
     $("slider1").val("2014");
 }
+
+function selectSuburb() {
+    alert( "circle clicked");
+}
+
+function clearCircles() {
+    for (var i in suburbCircles) {
+        suburbCircles[i].setMap(null);
+    }
+}
+
 
 
 function UpdateYear(val) {
