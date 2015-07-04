@@ -27,5 +27,9 @@ function initialize() {
         };
         suburbCircle = new google.maps.Circle(populationOptions);
     }
+    $("slider1").val("2014");
 }
 
+function UpdateYear(val) {
+    document.querySelector('#selectedYear').value = val;
+}
