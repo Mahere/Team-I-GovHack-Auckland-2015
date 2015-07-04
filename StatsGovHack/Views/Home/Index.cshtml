@@ -1,13 +1,48 @@
-﻿<!--Side Menu-->
-<div class="menu"></div>    
+﻿<!--Charts-->
+<div  ng-controller="mainController" class="charts-container">
+    {{random}}
+    <div id="chart_div"></div>
+</div>
+
+
+<!--Side Menu-->
+<div class="menu">
+
+    <form>
+        <div class="form-group">
+            <label>Dimensions</label>
+            <select ng-model="selectedDim">
+                <option>Population</option>
+                <option>Crime</option>
+                <option>Education</option>
+                <option>Housing</option>
+            </select>
+
+        </div> 
+        <button class="btn btn-primary" ng-click="addDimensionToSelection(selectedDim)">Add</button>
+    </form>
+
+
+    <select ng-model="selectedDim">
+        <option>Population</option>
+        <option>Crime</option>
+        <option>Education</option>
+        <option>Housing</option>
+    </select>
+    <button ng-click="addDimensionToSelection(selectedDim)">Add</button>
+
+    <ul>
+        <li></li>
+    </ul>
+    
+
+</div>    
 
 <!--Map-->
 <div id="map-canvas"></div>
 
-<!--Charts-->
 
-@*<div class="container charts-container" >
 
-</div>
 
-<div id="chart_div" style="width:400; height:300"></div>*@
+
+
