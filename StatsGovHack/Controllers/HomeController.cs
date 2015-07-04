@@ -38,6 +38,26 @@ namespace StatsGovHack.Controllers
             return Json("0", JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetAllPopulationBySuburb(string suburb)
+        {
+            if (HttpContext != null)
+            {
+                string fileName = Path.Combine(HttpContext.Request.PhysicalApplicationPath, "vw_popproj.json");
+
+                using (var r = new StreamReader(fileName))
+                {
+                    string json = r.ReadToEnd();
+                    var items = JsonConvert.DeserializeObject<List<Item>>(json);
+                    var filteredList = items.FindAll(x => x.suburb == suburb);
+                    if (filteredList != null)
+                    {
+                        return Json(filteredList, JsonRequestBehavior.AllowGet);
+                    }
+                }
+            }
+            return Json("0", JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult GetCrimeBySuburbAndYear(string suburb, string year)
         {
             if (HttpContext != null)
@@ -81,11 +101,65 @@ namespace StatsGovHack.Controllers
             return Json("0", JsonRequestBehavior.AllowGet); 
         }
 
+    
+
+    
+    public JsonResult GetSchoolDecileDataBySuburb(string suburb)
+        {
+            if (HttpContext != null)
+            {
+                string fileName = Path.Combine(HttpContext.Request.PhysicalApplicationPath, "vw_deciles2014primary.json");
+                using (var r = new StreamReader(fileName))
+                {
+                    string json = r.ReadToEnd();
+                    var items = JsonConvert.DeserializeObject<List<Item>>(json);
+
+                    var filteredItems = items.FindAll(x => x.suburb == suburb);
+
+                    if (filteredItems != null)
+                    {
+                        return Json(filteredItems, JsonRequestBehavior.AllowGet);
+                    }
+                }
+            }
+            return Json("0", JsonRequestBehavior.AllowGet); 
+        }
+
+    public JsonResult GethousePriceDataBySuburb(string suburb)
+    {
+        if (HttpContext != null)
+        {
+            string fileName = Path.Combine(HttpContext.Request.PhysicalApplicationPath, "houseprice.json");
+            using (var r = new StreamReader(fileName))
+            {
+                string json = r.ReadToEnd();
+                var items = JsonConvert.DeserializeObject<List<BaseModel>>(json);
+
+                var filteredItems = items.FindAll(x => x.suburb == suburb).OrderBy(x => x.year);
+
+                if (filteredItems != null)
+                {
+                    return Json(filteredItems, JsonRequestBehavior.AllowGet);
+                }
+            }
+        }
+        return Json("0", JsonRequestBehavior.AllowGet);
     }
+
+    }
+
+
 
     public class Item
     {
         public string year { get; set; }
+        public string suburb { get; set; }
+        public string value { get; set; }
+    }
+
+    public class BaseModel
+    {
+        public int year { get; set; }
         public string suburb { get; set; }
         public string value { get; set; }
     }
