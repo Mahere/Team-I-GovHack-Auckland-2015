@@ -132,6 +132,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\Angular_Custom_App\app.js" />
     <Content Include="Scripts\Angular_Custom_App\googleMaps.js" />
+    <Content Include="Scripts\Angular_Custom_App\graph.js" />
     <Content Include="Scripts\Angular_Custom_App\graphing.js" />
     <Content Include="Scripts\Angular_Custom_App\mainController.js" />
     <Content Include="Scripts\bootstrap.js" />
