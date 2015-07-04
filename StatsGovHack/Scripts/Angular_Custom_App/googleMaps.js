@@ -4,9 +4,14 @@ var suburbs = {};
 suburbs['Auckland CBD'] = {
     center: new google.maps.LatLng(-36.846815, 174.766249)
 };
-suburbs['Takapuna'] = {
-    var location = getCoOrdinates('Takapuna');
-    center: new google.maps.LatLng(location.latitude,location.longitude)
+suburbs['New Market'] = {
+    center: new google.maps.LatLng(-36.870385, 174.774553)
+};
+suburbs['Parnell'] = {
+    center: new google.maps.LatLng(-36.853791, 174.778626)
+};
+suburbs['Mt Albert'] = {
+    center: new google.maps.LatLng(-36.884209, 174.714081)
 };
 
 var suburbCircle;
@@ -29,16 +34,30 @@ function initialize() {
             center: suburbs[suburb].center,
             radius: 1000
         };
+        var population = checkPopulation(suburb);
+        console.log(population + ' People in ' + suburb);
         suburbCircle = new google.maps.Circle(populationOptions);
     }
 }
 
-function getCoOrdinates(address) {
-    var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ 'address': address }, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-            return results[0].geometry.location.getLatLng();
-        } else
-            alert('error: ' + status);
+function checkPopulation(sub) {
+    $.ajax({
+        datatype: "json",
+        url: '/vw_pastpop2013.json',
+        success: function (response) {
+            return addPopulation(response,sub);
+        }
     });
-};
+}
+
+function addPopulation(list, keyword) {
+    var pop = 0;
+    for(var item in list) {
+        if (list.hasOwnProperty(item)) {
+            if (item.suburb == keyword) {
+                pop += item.value;
+            }
+        }
+    }
+    return pop;
+}
