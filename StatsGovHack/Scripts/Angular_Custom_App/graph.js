@@ -207,12 +207,10 @@ var drawPopullationChart = function(selectedYear){
     chart.draw(graphData, options);
 };
 
-//Retrieve Data
-var URL = "http://localhost:49313/";    //Dev
-//var URL = "http://mahere-govhack15nz.azurewebsites.net/"; //Production
+
 
 function getCrimeData(selectedSuburb) {
-    var url = URL + 'Home/GetCrimeDataBySuburb';
+    var url = 'Home/GetCrimeDataBySuburb';
     $.get(url, {suburb: selectedSuburb}, function (response) {
         if (console)
         console.log(response);
@@ -222,7 +220,7 @@ function getCrimeData(selectedSuburb) {
 };
 
 var getEducationData = function (selectedSuburb) {
-    var url = URL + 'Home/GetSchoolDecileDataBySuburb';
+    var url = 'Home/GetSchoolDecileDataBySuburb';
     $.get(url, { suburb: selectedSuburb }, function (response) {
         if (console)
         console.log(response);
@@ -232,7 +230,7 @@ var getEducationData = function (selectedSuburb) {
 };
 
 var getHousingData = function (selectedSuburb) {
-    var url = URL + 'Home/GethousePriceDataBySuburb';
+    var url = 'Home/GethousePriceDataBySuburb';
     $.get(url, { suburb: selectedSuburb }, function (response) {
         if (console)
         console.log(response);
@@ -243,7 +241,7 @@ var getHousingData = function (selectedSuburb) {
 
 var getPopullationData = function (selectedSuburb) {
     
-    var url = URL + 'Home/GetAllPopulationBySuburb';
+    var url = 'Home/GetAllPopulationBySuburb';
     $.get(url, { suburb: selectedSuburb }, function (response) {
         if (console)
         console.log(response);

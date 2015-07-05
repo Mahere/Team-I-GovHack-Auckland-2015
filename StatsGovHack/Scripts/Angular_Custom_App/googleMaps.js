@@ -1,35 +1,31 @@
 ﻿$(document).ready(initialize);
+var map;
+var suburbs = [];
 
-var suburbs = {};
-suburbs['Auckland CBD'] = {
-    center: new google.maps.LatLng(-36.846815, 174.766249),
-    population: 21000
-};
-suburbs['New Market'] = {
-    center: new google.maps.LatLng(-36.870385, 174.774553),
-    population: 19000
-};
-suburbs['Parnell'] = {
-    center: new google.maps.LatLng(-36.853791, 174.778626),
-    population: 14000
-};
-suburbs['Mt Albert'] = {
-    center: new google.maps.LatLng(-36.884209, 174.714081),
-    population: 4999
-};
+function getAllSuburbs() {
+    var url =  '/home/GetAllSuburbs';
+    $.get(url, function (result) {
+        console.log(result);
+        saveSuburbs(result);
+    });
+}
 
-
+function saveSuburbs(list) {
+    for (var i=0; i<list.length;i++) {
+        var sub = new Suburb(list[i].suburb, list[i].area, list[i].latitude, list[i].longitude);
+        suburbs.push(sub);
+    }
+    createCircle();
+}
 var suburbCircles = [];
 
-function initialize() {
-    var mapOptions = {
-        center: { lat: -36.84379, lng: 174.76247 },
-        zoom: 10
-    };
-    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-    for (var suburb in suburbs) {
-        var popColour = colourCode(suburbs[suburb].population); //insert population here
+function createCircle() {
+    for (var i = 0; i < suburbs.length; i++) {
+        console.log("getting" + suburbs[i].name);
+        var pop = getPopulation(suburbs[i].name);
+        console.log('population is ' + pop);
+        var popColour = colourCode(pop); //insert population here
+        console.log(popColour);
         var populationOptions = {
             strokeColor: popColour,
             strokeOpacity: 0.8,
@@ -37,27 +33,37 @@ function initialize() {
             fillColor: popColour,
             fillOpacity: 0.8,
             map: map,
-            center: suburbs[suburb].center,
-            radius: 800,
-            clickable: true
+            center: suburbs[i].center,
+            radius: 800
         };
 
         var suburbCircle = {
-            suburb: suburb,
+            suburb: suburbs[i].name,
             circle: new google.maps.Circle(populationOptions)
         }
-     
-          suburbCircles.push(suburbCircle);
-    }
 
-    for (var i = 0; i < suburbCircles.length; i++) {
-        google.maps.event.addListener(suburbCircles[i].circle, 'click', selectSuburb);
+        suburbCircles.push(suburbCircle);
+    }
+}
+
+function initialize() {
+    var mapOptions = {
+        center: { lat: -36.84379, lng: 174.76247 },
+        zoom: 10
+    };
+    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    getAllSuburbs();
+    console.log(suburbs);
+    
+
+    for (var j = 0; j < suburbCircles.length; j++) {
+        google.maps.event.addListener(suburbCircles[j].circle, 'click', selectSuburb);
     }
     $("slider1").val("2014");
 }
 
 function selectSuburb() {
-    alert( "circle clicked");
+    alert("circle clicked");
 }
 
 function clearCircles() {
@@ -66,7 +72,25 @@ function clearCircles() {
     }
 }
 
-
+function getPopulation(sub) {
+    var population = 0;
+    //var yr = $('#slider1').val();
+    var yr = 2013;
+    console.log('geting population for '+ yr);
+    var uri = '/home/GetPopulationBySuburb';
+    $.ajax({
+            url: uri,
+            async: false,
+            method: "GET",
+            dataType: 'json',
+            data: { suburb: sub, year: yr }
+        })
+    .done(function (result) {    
+        console.log("Population for " + sub + ' is ' + result);
+        population = result;
+    });
+    return population;
+}
 
 function UpdateYear(val) {
     document.querySelector('#selectedYear').value = val;
