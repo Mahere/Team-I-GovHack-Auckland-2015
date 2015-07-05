@@ -4,7 +4,6 @@
     this.lat = lat;
     this.lng = lng;
     this.center = new google.maps.LatLng(this.lat, this.lng);
-    this.circle = null;
 }
 
 //Suburb.prototype.addCircle = function(population) {

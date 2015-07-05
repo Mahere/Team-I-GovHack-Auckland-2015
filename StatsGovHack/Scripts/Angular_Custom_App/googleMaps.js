@@ -11,10 +11,10 @@ function getAllSuburbs() {
 }
 
 function saveSuburbs(list) {
-    for (var item in list) {
-        var suburb = new Suburb(item.suburb, item.area, item.latitude, item.longitude);
-        console.log('pushing ' + item + ' to suburb array');
-        suburbs.push(suburb);
+    for (var i=0; i<list.length;i++) {
+        var sub = new Suburb(list[i].suburb, list[i].area, list[i].latitude, list[i].longitude);
+        console.log('pushing ' + list[i].suburb+',' +list[i].area+','+ list[i].latitude+','+list[i].longitude + ' to suburb array');
+        suburbs.push(sub);
     }
 }
 var suburbCircles = [];
@@ -25,9 +25,11 @@ function initialize() {
         zoom: 10
     };
     var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-    for (var suburb in suburbs) {
-        var popColour = colourCode(suburbs[suburb].population); //insert population here
+    getAllSuburbs();
+    console.log(suburbs);
+    getPopulation('Ranui');
+    for (var i=0;i<suburbs.length;i++) {
+        var popColour = colourCode(suburbs[i].population); //insert population here
         var populationOptions = {
             strokeColor: popColour,
             strokeOpacity: 0.8,
@@ -63,7 +65,14 @@ function clearCircles() {
     }
 }
 
-
+function getPopulation(sub) {
+    var yr = $('#slider1').val();
+    console.log('geting population for '+ yr);
+    var url = URL + '/home/GetPopulationBySuburb';
+    $.get(url, { suburb: sub, year: yr }, function(result) {
+        console.log("Population for "+ sub + ' is ' +result);
+    });
+}
 
 function UpdateYear(val) {
     document.querySelector('#selectedYear').value = val;
