@@ -134,6 +134,7 @@
     <Content Include="data\vw_crime.json" />
     <Content Include="data\vw_deciles2014primary.json" />
     <Content Include="data\vw_pastpoprev.json" />
+    <Content Include="data\vw_popCombined.json" />
     <Content Include="data\vw_popprojrev.json" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -147,7 +148,6 @@
     <Content Include="Scripts\Angular_Custom_App\mainController.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="data\vw_popCombined.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
