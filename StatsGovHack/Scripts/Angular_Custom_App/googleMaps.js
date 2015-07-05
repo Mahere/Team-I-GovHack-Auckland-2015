@@ -45,7 +45,7 @@ function createCircle() {
 function initialize() {
     var mapOptions = {
         center: { lat: -36.84379, lng: 174.76247 },
-        zoom: 10
+        zoom: 11
     };
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     getAllSuburbs();
