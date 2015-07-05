@@ -145,9 +145,9 @@
     <Content Include="Scripts\Angular_Custom_App\graph.js" />
     <Content Include="Scripts\Angular_Custom_App\graphing.js" />
     <Content Include="Scripts\Angular_Custom_App\mainController.js" />
+    <Content Include="Scripts\Angular_Custom_App\suburb.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="data\vw_popCombined.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
