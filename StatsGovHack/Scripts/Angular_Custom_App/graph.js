@@ -31,18 +31,18 @@ var drawCrimeChart = function (selectedYear) {
         if (selectedYear != null) {
             if (selectedYear == tempArr[0]) {
                 tempArr[2] = 'point { size: 8; shape: circle; fill-color: #FF6600}';
-                console.log("hit 2005" + selectedYear);
+                if (console)
+                    console.log("hit 2005" + selectedYear);
             }
         } else {
-            console.log("hit empty" + selectedYear);
-
+            if (console)
+                console.log("hit empty" + selectedYear);
             tempArr[2] = 'point { size: 7; shape-type: circle; fill-color: #15A0C8}';
-
-            //tempArr[2] = null;
         }
         convertedArr.push(tempArr);
     }
-    console.log(convertedArr);
+    if(console)
+        console.log(convertedArr);
 
     var graphData = google.visualization.arrayToDataTable(convertedArr);
 
@@ -67,7 +67,8 @@ var drawEducationChart = function (){
         tempArr[1] = parseInt(currentElement.value);
         convertedArr.push(tempArr);
     }
-    console.log(convertedArr);
+    if (console)
+        console.log(convertedArr);
 
     var graphData = google.visualization.arrayToDataTable(convertedArr);
 
@@ -92,7 +93,8 @@ var drawHousingChart = function () {
         tempArr[1] = parseInt(currentElement.value);
         convertedArr.push(tempArr);
     }
-    console.log(convertedArr);
+    if (console)
+        console.log(convertedArr);
 
     var graphData = google.visualization.arrayToDataTable(convertedArr);
 
@@ -117,7 +119,8 @@ var drawPopullationChart = function(){
         tempArr[1] = parseInt(currentElement.value);
         convertedArr.push(tempArr);
     }
-    console.log(convertedArr);
+    if (console)
+        console.log(convertedArr);
 
     var graphData = google.visualization.arrayToDataTable(convertedArr);
 
@@ -136,7 +139,8 @@ var URL = "http://localhost:49313/";
 function getCrimeData(selectedSuburb) {
     var url = URL + 'Home/GetCrimeDataBySuburb';
     $.get(url, {suburb: selectedSuburb}, function (response) {
-        console.log(response);
+        if (console)
+            console.log(response);
         crimeResult = response;
         return response;
     });
@@ -145,7 +149,8 @@ function getCrimeData(selectedSuburb) {
 var getEducationData = function (selectedSuburb) {
     var url = URL + 'Home/GetSchoolDecileDataBySuburb';
     $.get(url, { suburb: selectedSuburb }, function (response) {
-        console.log(response);
+        if (console)
+            console.log(response);
         schoolDecileResult = response;
         return response;
     });
@@ -154,7 +159,8 @@ var getEducationData = function (selectedSuburb) {
 var getHousingData = function (selectedSuburb) {
     var url = URL + 'Home/GethousePriceDataBySuburb';
     $.get(url, { suburb: selectedSuburb }, function (response) {
-        console.log(response);
+        if (console)
+            console.log(response);
         housingResult = response;
         return response;
     });
@@ -164,7 +170,8 @@ var getPopullationData = function (selectedSuburb) {
     
     var url = URL + 'Home/GetAllPopulationBySuburb';
     $.get(url, { suburb: selectedSuburb }, function (response) {
-        console.log(response);
+        if (console)
+            console.log(response);
         popullationResult = response;
         return response;
     });
@@ -178,6 +185,7 @@ getHousingData("Pakuranga");
 
 //Update Widgets- Call this based on change detected by the slider and map
 function updateCharts(time) {
-    console.log("@ updateCharts " + time);
+    if (console)
+        console.log("@ updateCharts " + time);
     drawGraphs(time);
 };

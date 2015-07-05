@@ -152,6 +152,9 @@
     <Content Include="data\aucklandwestarea.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="data\houseprice.json" />
+    <Content Include="data\vw_pastpoprev.json" />
+    <Content Include="data\vw_popprojrev.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -172,11 +175,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="vw_popproj.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="vw_pastpop2013.json" />
-    <Content Include="vw_crime.json" />
+    <Content Include="data\vw_crime.json" />
+    <Content Include="data\vw_deciles2014primary.json" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
