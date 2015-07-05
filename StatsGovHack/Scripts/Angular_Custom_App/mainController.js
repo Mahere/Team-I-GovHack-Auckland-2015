@@ -1,6 +1,6 @@
 ﻿myApp.controller('mainController', ['$scope', function ($scope) {
 
-    $scope.selectedLocation = "East Auckland";
+    $scope.selectedLocation = "West Auckland";
 
         
 

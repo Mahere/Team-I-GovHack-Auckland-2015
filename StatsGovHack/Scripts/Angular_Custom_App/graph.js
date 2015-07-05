@@ -160,7 +160,7 @@ var drawHousingChart = function (selectedYear) {
 var drawPopullationChart = function(selectedYear){
     var data = popullationResult;
     var convertedArr = [];
-    var tempArr = ['Year', 'Popullation', { 'type': 'string', 'role': 'style' }];
+    var tempArr = ['Year', 'Population', { 'type': 'string', 'role': 'style' }];
     convertedArr.push(tempArr);
     for (var i = 0; i < data.length; i++) {
         var currentElement = data[i];
@@ -182,7 +182,7 @@ var drawPopullationChart = function(selectedYear){
     var graphData = google.visualization.arrayToDataTable(convertedArr);
 
     var options = {
-        title: 'Popullation',
+        title: 'Population',
         curveType: 'function',
         legend: { position: 'bottom' }
     };
@@ -243,10 +243,10 @@ var getPopullationData = function (selectedSuburb) {
 
 }
 
-getCrimeData("Auckland Central Area");
-getPopullationData("Manukau");
-getEducationData("Mt Eden");
-getHousingData("Pakuranga");
+getCrimeData("Auckland West Area");
+getPopullationData("Henderson");
+getEducationData("Henderson");
+getHousingData("Henderson");
 
 //Update Widgets- Call this based on change detected by the slider and map
 function updateCharts(time) {
