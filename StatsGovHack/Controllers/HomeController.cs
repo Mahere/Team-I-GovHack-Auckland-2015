@@ -148,7 +148,7 @@ namespace StatsGovHack.Controllers
             using (var r = new StreamReader(fileName))
             {
                 string json = r.ReadToEnd();
-                var items = JsonConvert.DeserializeObject<List<BaseModel>>(json);
+                var items = JsonConvert.DeserializeObject<List<Item>>(json);
 
                 var filteredItems = items.FindAll(x => x.suburb == suburb).OrderBy(x => x.year);
 
