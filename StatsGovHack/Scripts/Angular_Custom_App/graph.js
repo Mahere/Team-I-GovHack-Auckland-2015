@@ -39,7 +39,6 @@ var drawCrimeChart = function (selectedYear) {
         }
         convertedArr.push(tempArr);
     }
-    console.log(convertedArr);
 
     var graphData = google.visualization.arrayToDataTable(convertedArr);
 
@@ -87,7 +86,6 @@ var drawEducationChart = function (selectedYear){
         }
         convertedArr.push(tempArr);
     }
-    console.log(convertedArr);
 
     var graphData = google.visualization.arrayToDataTable(convertedArr);
 
@@ -134,7 +132,6 @@ var drawHousingChart = function (selectedYear) {
         convertedArr.push(tempArr);
     }
     if (console)
-    console.log(convertedArr);
 
     var graphData = google.visualization.arrayToDataTable(convertedArr);
 
@@ -163,7 +160,7 @@ var drawHousingChart = function (selectedYear) {
 var drawPopullationChart = function(selectedYear){
     var data = popullationResult;
     var convertedArr = [];
-    var tempArr = ['Year', 'Popullation', { 'type': 'string', 'role': 'style' }];
+    var tempArr = ['Year', 'Population', { 'type': 'string', 'role': 'style' }];
     convertedArr.push(tempArr);
     for (var i = 0; i < data.length; i++) {
         var currentElement = data[i];
@@ -181,12 +178,11 @@ var drawPopullationChart = function(selectedYear){
         convertedArr.push(tempArr);
     }
     if (console)
-    console.log(convertedArr);
 
     var graphData = google.visualization.arrayToDataTable(convertedArr);
 
     var options = {
-        title: 'Popullation',
+        title: 'Population',
         curveType: 'function',
         legend: { position: 'bottom' }
     };
@@ -213,7 +209,6 @@ function getCrimeData(selectedSuburb) {
     var url = 'Home/GetCrimeDataBySuburb';
     $.get(url, {suburb: selectedSuburb}, function (response) {
         if (console)
-        console.log(response);
         crimeResult = response;
         return response;
     });
@@ -223,7 +218,6 @@ var getEducationData = function (selectedSuburb) {
     var url = 'Home/GetSchoolDecileDataBySuburb';
     $.get(url, { suburb: selectedSuburb }, function (response) {
         if (console)
-        console.log(response);
         schoolDecileResult = response;
         return response;
     });
@@ -233,7 +227,6 @@ var getHousingData = function (selectedSuburb) {
     var url = 'Home/GethousePriceDataBySuburb';
     $.get(url, { suburb: selectedSuburb }, function (response) {
         if (console)
-        console.log(response);
         housingResult = response;
         return response;
     });
@@ -244,22 +237,20 @@ var getPopullationData = function (selectedSuburb) {
     var url = 'Home/GetAllPopulationBySuburb';
     $.get(url, { suburb: selectedSuburb }, function (response) {
         if (console)
-        console.log(response);
         popullationResult = response;
         return response;
     });
 
 }
 
-getCrimeData("Auckland Central Area");
-getPopullationData("Manukau");
-getEducationData("Mt Eden");
-getHousingData("Pakuranga");
+getCrimeData("Auckland West Area");
+getPopullationData("Henderson");
+getEducationData("Henderson");
+getHousingData("Henderson");
 
 //Update Widgets- Call this based on change detected by the slider and map
 function updateCharts(time) {
     if (console)
-    console.log("@ updateCharts " + time);
     
 
     drawGraphs(time);

@@ -5,7 +5,6 @@ var suburbs = [];
 function getAllSuburbs() {
     var url =  '/home/GetAllSuburbs';
     $.get(url, function (result) {
-        console.log(result);
         saveSuburbs(result);
     });
 }
@@ -21,11 +20,8 @@ var suburbCircles = [];
 
 function createCircle() {
     for (var i = 0; i < suburbs.length; i++) {
-        console.log("getting" + suburbs[i].name);
         var pop = getPopulation(suburbs[i].name);
-        console.log('population is ' + pop);
         var popColour = colourCode(pop); //insert population here
-        console.log(popColour);
         var populationOptions = {
             strokeColor: popColour,
             strokeOpacity: 0.8,
@@ -49,11 +45,10 @@ function createCircle() {
 function initialize() {
     var mapOptions = {
         center: { lat: -36.84379, lng: 174.76247 },
-        zoom: 10
+        zoom: 11
     };
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     getAllSuburbs();
-    console.log(suburbs);
     
 
     for (var j = 0; j < suburbCircles.length; j++) {
@@ -76,7 +71,6 @@ function getPopulation(sub) {
     var population = 0;
     //var yr = $('#slider1').val();
     var yr = 2013;
-    console.log('geting population for '+ yr);
     var uri = '/home/GetPopulationBySuburb';
     $.ajax({
             url: uri,
@@ -86,7 +80,6 @@ function getPopulation(sub) {
             data: { suburb: sub, year: yr }
         })
     .done(function (result) {    
-        console.log("Population for " + sub + ' is ' + result);
         population = result;
     });
     return population;

@@ -134,6 +134,7 @@
     <Content Include="data\vw_crime.json" />
     <Content Include="data\vw_deciles2014primary.json" />
     <Content Include="data\vw_pastpoprev.json" />
+    <Content Include="data\vw_popCombined.json" />
     <Content Include="data\vw_popprojrev.json" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
