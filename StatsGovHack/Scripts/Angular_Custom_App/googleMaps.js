@@ -3,7 +3,7 @@ var map;
 var suburbs = [];
 
 function getAllSuburbs() {
-    var url = URL + '/home/GetAllSuburbs';
+    var url =  '/home/GetAllSuburbs';
     $.get(url, function (result) {
         console.log(result);
         saveSuburbs(result);
@@ -13,7 +13,6 @@ function getAllSuburbs() {
 function saveSuburbs(list) {
     for (var i=0; i<list.length;i++) {
         var sub = new Suburb(list[i].suburb, list[i].area, list[i].latitude, list[i].longitude);
-        //console.log('pushing ' + list[i].suburb+',' +list[i].area+','+ list[i].latitude+','+list[i].longitude + ' to suburb array');
         suburbs.push(sub);
     }
     createCircle();
@@ -78,7 +77,7 @@ function getPopulation(sub) {
     //var yr = $('#slider1').val();
     var yr = 2013;
     console.log('geting population for '+ yr);
-    var uri = URL + '/home/GetPopulationBySuburb';
+    var uri = '/home/GetPopulationBySuburb';
     $.ajax({
             url: uri,
             async: false,
