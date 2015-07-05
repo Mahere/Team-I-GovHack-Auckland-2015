@@ -33,10 +33,13 @@ var drawCrimeChart = function (selectedYear) {
                 tempArr[2] = 'point { size: 8; shape: circle; fill-color: #FF6600}';
             }
         } else {
+            console.log("hit empty" + selectedYear);
+
             tempArr[2] = 'point { size: 7; shape-type: circle; fill-color: #15A0C8}';
         }
         convertedArr.push(tempArr);
     }
+    console.log(convertedArr);
 
     var graphData = google.visualization.arrayToDataTable(convertedArr);
 
@@ -84,6 +87,7 @@ var drawEducationChart = function (selectedYear){
         }
         convertedArr.push(tempArr);
     }
+    console.log(convertedArr);
 
     var graphData = google.visualization.arrayToDataTable(convertedArr);
 
@@ -129,6 +133,7 @@ var drawHousingChart = function (selectedYear) {
         }
         convertedArr.push(tempArr);
     }
+    if (console)
     console.log(convertedArr);
 
     var graphData = google.visualization.arrayToDataTable(convertedArr);
@@ -175,6 +180,7 @@ var drawPopullationChart = function(selectedYear){
         }
         convertedArr.push(tempArr);
     }
+    if (console)
     console.log(convertedArr);
 
     var graphData = google.visualization.arrayToDataTable(convertedArr);
@@ -208,6 +214,7 @@ var URL = "http://localhost:49313/";    //Dev
 function getCrimeData(selectedSuburb) {
     var url = URL + 'Home/GetCrimeDataBySuburb';
     $.get(url, {suburb: selectedSuburb}, function (response) {
+        if (console)
         console.log(response);
         crimeResult = response;
         return response;
@@ -217,6 +224,7 @@ function getCrimeData(selectedSuburb) {
 var getEducationData = function (selectedSuburb) {
     var url = URL + 'Home/GetSchoolDecileDataBySuburb';
     $.get(url, { suburb: selectedSuburb }, function (response) {
+        if (console)
         console.log(response);
         schoolDecileResult = response;
         return response;
@@ -226,6 +234,7 @@ var getEducationData = function (selectedSuburb) {
 var getHousingData = function (selectedSuburb) {
     var url = URL + 'Home/GethousePriceDataBySuburb';
     $.get(url, { suburb: selectedSuburb }, function (response) {
+        if (console)
         console.log(response);
         housingResult = response;
         return response;
@@ -236,6 +245,7 @@ var getPopullationData = function (selectedSuburb) {
     
     var url = URL + 'Home/GetAllPopulationBySuburb';
     $.get(url, { suburb: selectedSuburb }, function (response) {
+        if (console)
         console.log(response);
         popullationResult = response;
         return response;
@@ -244,12 +254,13 @@ var getPopullationData = function (selectedSuburb) {
 }
 
 getCrimeData("Auckland Central Area");
-getPopullationData("Auckland Central West");
+getPopullationData("Manukau");
 getEducationData("Mt Eden");
 getHousingData("Pakuranga");
 
 //Update Widgets- Call this based on change detected by the slider and map
 function updateCharts(time) {
+    if (console)
     console.log("@ updateCharts " + time);
     
 

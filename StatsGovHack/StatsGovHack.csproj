@@ -125,6 +125,16 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\nzmap.png" />
+    <Content Include="data\aucklandcentralarea.json" />
+    <Content Include="data\aucklandeastarea.json" />
+    <Content Include="data\aucklandnortharea.json" />
+    <Content Include="data\aucklandsoutharea.json" />
+    <Content Include="data\aucklandwestarea.json" />
+    <Content Include="data\houseprice.json" />
+    <Content Include="data\vw_crime.json" />
+    <Content Include="data\vw_deciles2014primary.json" />
+    <Content Include="data\vw_pastpoprev.json" />
+    <Content Include="data\vw_popprojrev.json" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -137,24 +147,7 @@
     <Content Include="Scripts\Angular_Custom_App\mainController.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="data\aucklandcentralarea.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\aucklandeastarea.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\aucklandnortharea.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\aucklandsoutharea.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\aucklandwestarea.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\houseprice.json" />
-    <Content Include="data\vw_pastpoprev.json" />
-    <Content Include="data\vw_popprojrev.json" />
+    <Content Include="data\vw_popCombined.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -175,8 +168,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="data\vw_crime.json" />
-    <Content Include="data\vw_deciles2014primary.json" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

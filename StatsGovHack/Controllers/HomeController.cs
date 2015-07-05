@@ -52,12 +52,17 @@ namespace StatsGovHack.Controllers
         {
             if (HttpContext != null)
             {
-                string fileName = Path.Combine(HttpContext.Request.PhysicalApplicationPath, DataFolder, "vw_popprojrev.json");
+                string fileName = Path.Combine(HttpContext.Request.PhysicalApplicationPath, DataFolder, "vw_popCombined.json");
 
                 using (var r = new StreamReader(fileName))
                 {
+
+                    List<BaseModel> rndmList = new List<BaseModel>();
+                    
+
                     string json = r.ReadToEnd();
-                    var items = JsonConvert.DeserializeObject<List<Item>>(json);
+                    var items = JsonConvert.DeserializeObject<List<BaseModel>>(json);
+
                     var filteredList = items.FindAll(x => x.suburb == suburb);
                     if (filteredList != null)
                     {
