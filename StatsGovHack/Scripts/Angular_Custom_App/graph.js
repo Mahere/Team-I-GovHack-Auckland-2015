@@ -208,7 +208,7 @@ var drawPopullationChart = function(selectedYear){
 };
 
 //Retrieve Data
-var URL = "http://localhost:49313/";    //Dev
+var URL = "~/";    //Dev
 //var URL = "http://mahere-govhack15nz.azurewebsites.net/"; //Production
 
 function getCrimeData(selectedSuburb) {
