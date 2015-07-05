@@ -141,11 +141,11 @@ var drawHousingChart = function (selectedYear) {
     var chart = new google.visualization.LineChart(document.getElementById('housing_chart'));
     if (selectedYear) {
         google.visualization.events.addListener(chart, 'ready', function (e) {
-            for (var i = 0; i < convertedArr.length; i++) {
-                for (var j = 0; j < convertedArr[i].length; j++) {
-                    var item = convertedArr[i];
+            for (var i2 = 0; i2 < convertedArr.length; i2++) {
+                for (var j = 0; j < convertedArr[i2].length; j++) {
+                    var item = convertedArr[i2];
                     if (parseInt(item[0]) == parseInt(selectedYear)) {
-                        chart.setSelection([{ row: (i - 1), column: null }]);
+                        chart.setSelection([{ row: (i2 - 1), column: null }]);
 
                     }
                 }
